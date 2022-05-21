@@ -2,15 +2,22 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import VMain from '@/components/VMain.vue'
+import VCompany from '@/components/mitm-app/VCompany.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'VMain',
     component: VMain,
+  }, 
+  {
+    path: '/company',
+    name: 'VCompany',
+    component: VCompany,
   },
+
 ]
 
 const router = new VueRouter({
