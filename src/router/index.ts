@@ -3,10 +3,17 @@ import VueRouter from 'vue-router'
 
 import VMain from '@/components/VMain.vue'
 import VCompany from '@/components/mitm-app/VCompany.vue'
+import VCalendar from '@/components/mitm-app/VCalendar.vue'
+import { isCallSignatureDeclaration } from 'typescript'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: VCalendar,
+  },
   {
     path: '/',
     name: 'VMain',
