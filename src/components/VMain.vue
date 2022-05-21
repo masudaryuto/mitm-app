@@ -3,25 +3,50 @@
 
     <div class="login_form">
       <h1>ログイン</h1>
-
+      <br>
+    <v-row justify="center" padding=80px>
+    <v-col
+      cols="12"
+      sm="6"
+      md="4"
+      >
       <v-text-field
       placeholder="id"
-      outlined>
+      filled
+      rounded
+      dense
+      outlined
+      class="text-h5"
+      height = 50px>
       </v-text-field>
-
+      </v-col>
+      </v-row>
+    <v-row justify = "center">
+      <v-col
+      cols="12"
+      sm = "6"
+      md="4"
+      >
       <v-text-field
       placeholder="password"
-      outlined>
+      filled
+      rounded
+      dense
+      outlined
+      class="text-h5"
+      height = 50px>
       </v-text-field>
-
-
+      </v-col>
+      </v-row>
+      <br><br>
       <v-row
       align="center"
       justify="space-around"
       >
         <v-btn
         color="primary"
-        
+        elevation="10"
+        x-large
         @click="$router.push('/company')"
         >
         ログイン
@@ -53,6 +78,9 @@ export default class VMain extends Vue {
   text-align: center;
 }
 
-
+.margin{
+  padding-bottom: 100px;
+  margin-bottom: 100px;
+}
 
 </style>
