@@ -5,7 +5,7 @@
             text
             large
             color="blue"
-            @click="next"
+            @click="$router.push('/calendar/addSchedule')"
           >
             <v-icon xx-large>
                 mdi-plus-circle
@@ -145,6 +145,8 @@
   </div>
 </template>
 
+
+
 <script>
   export default {
     data: () => ({
@@ -184,7 +186,7 @@
         this.$refs.calendar.next()
       },
       addwindow () {
-          
+          return 0;
       },
       showEvent ({ nativeEvent, event }) {
         const open = () => {

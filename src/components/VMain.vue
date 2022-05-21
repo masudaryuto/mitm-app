@@ -39,14 +39,13 @@
       </v-col>
       </v-row>
       <br><br>
+
       <v-row
       align="center"
       justify="space-around"
       >
         <v-btn
         color="primary"
-        elevation="10"
-        x-large
         @click="$router.push('/company')"
         >
         ログイン
@@ -67,7 +66,13 @@ import {Vue, Component} from 'vue-property-decorator';
 @Component
 export default class VMain extends Vue {
   
+  public id = "m"
+
+  public password = "090"
   
+  public login(){
+    return 0
+  }
 }
 </script>
 

@@ -37,26 +37,30 @@
 		<a v-bind:href="company_url">{{company_url}}</a>
 	</v-layout>
 
-	<v-card 
-		elevation="1"
-		outlined
-		title
-		>
-		<div class="schedule_title">
-			<p>{{companySchedule.scheduleTitle}}</p>
-		</div>
-		<div class="schedule_date">
-			<p>{{companySchedule.scheduleDate}}</p>
-		</div>
-		<div class="company_url">
-			<p>{{companySchedule.scheduleUrl}}</p>
-		</div>
-		<div class="memo">
-			<p>{{companySchedule.scheduleMemo}}</p>
-		</div>
-	</v-card>
 
-	<br><br>
+
+	<div v-for="companySchedule in companySchedules" :key="companySchedule.schedule_title">
+		<v-card 
+			elevation="1"
+			outlined
+			title
+			>
+			<div class="schedule_title">
+				<p>{{companySchedule.scheduleTitle}}</p>
+			</div>
+			<div class="schedule_date">
+				<p>{{companySchedule.scheduleDate}}</p>
+			</div>
+			<div class="company_url">
+				<p>{{companySchedule.scheduleUrl}}</p>
+			</div>
+			<div class="memo">
+				<p>{{companySchedule.scheduleMemo}}</p>
+			</div>
+		</v-card>
+
+		<br><br>
+	</div>
 
 
 
@@ -72,9 +76,13 @@ export default class VCompany extends Vue {
 	public statusText = '選考状態'
 	public industryText = '業種'
 	public company_url = 'https://...'
-	public companySchedule = {scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'}
-
-
+	//public companySchedule = {scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'}
+	
+	public companySchedules = [
+		{scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'},
+		{scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'},
+		{scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'},
+	]
 
 
 	
@@ -87,7 +95,7 @@ export default class VCompany extends Vue {
 
 .company_name{
 	font-size: xx-large;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	//font-family:'Times New Roman', Times, serif;
 }
 
 </style>
