@@ -1,11 +1,11 @@
 <template>
-  <v-container>
+  <v-container fluid>
 	<h1>スケジュール追加</h1>
   <v-form>
     <v-text-field
       placeholder="タイトル"
       outlined
-      >
+    >
     </v-text-field>
 
     <v-menu
@@ -41,15 +41,18 @@
     </v-text-field>
 
     <br><br>
-    
-    <v-text-field
-      placeholder="メモ"
-      outlined
-    >
-    </v-text-field>
-
 
   </v-form>
+    <v-textarea
+      name="input-7-1"
+      label="メモ"
+      auto-grow
+      value=""
+      counter
+      outlined
+    ></v-textarea>
+
+
   </v-container>
 </template>
 
