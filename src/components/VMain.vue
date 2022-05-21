@@ -4,15 +4,22 @@
     <div class="login_form">
       <h1>ログイン</h1>
 
-      <v-text-field
-      placeholder="id"
-      outlined>
-      </v-text-field>
+      <v-form ref="form">
+        <v-text-field
+        placeholder="id"
+        outlined
+        v-model="id">
+        </v-text-field>
 
-      <v-text-field
-      placeholder="password"
-      outlined>
-      </v-text-field>
+        <v-text-field
+        placeholder="password"
+        outlined
+        v-model="password"
+        type="password"
+        >
+        {{password}}
+        </v-text-field>
+      </v-form>
 
 
       <v-row
@@ -21,7 +28,7 @@
       >
         <v-btn
         color="primary"
-        
+       
         @click="$router.push('/company')"
         >
         ログイン
@@ -42,7 +49,13 @@ import {Vue, Component} from 'vue-property-decorator';
 @Component
 export default class VMain extends Vue {
   
+  public id = "m"
+
+  public password = "090"
   
+  public login(){
+    return 0
+  }
 }
 </script>
 
