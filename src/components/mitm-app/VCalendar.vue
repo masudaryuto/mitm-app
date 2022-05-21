@@ -5,7 +5,7 @@
             text
             large
             color="blue"
-            @click="next"
+            @click="$router.push('/calendar/addSchedule')"
           >
             <v-icon xx-large>
                 mdi-plus-circle
