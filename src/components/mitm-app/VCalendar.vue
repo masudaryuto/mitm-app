@@ -1,16 +1,92 @@
 <template>
   <div>
+          <v-dialog
+            v-model="dialog"
+            max-width="500px"
+          >
+        <template v-slot:activator="{on}">
           <v-btn
             fab
             text
             large
             color="blue"
-            @click="$router.push('/calendar/addSchedule')"
+            v-on="on"
           >
-            <v-icon xx-large>
+            <v-icon x-large>
                 mdi-plus-circle
             </v-icon>
           </v-btn>
+          </template>
+          <v-card>
+              <v-card-title>
+                  <span class="text-h5">{{formTitle}}</span>
+              </v-card-title>
+              <v-card-text>
+                  <v-container>
+                      <v-row>
+                          <v-col
+                          cols="12"
+                          sm="6"
+                          md="4"
+                          >
+                          <v-text-field
+                            v-model="newEvent.name"
+                            label="Event"
+                          ></v-text-field>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            sm="6"
+                            md="4"  
+                          >
+                            <v-text-field
+                                v-model="newEvent.start"
+                                label="Start"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            sm="6"
+                            md="4"
+                          >
+                            <v-text-field
+                                v-model="newEvent.end"
+                                label="End"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            sm="6"
+                            md="4"
+                          >
+                            <v-text-field
+                                v-model="newEvent.memo"
+                                label="Memo"
+                            ></v-text-field>
+                          </v-col>
+                      </v-row>
+                  </v-container>
+              </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                color="blue darken-1"
+                text
+                @click="close"
+              >
+                Cancel
+              </v-btn>
+              <v-btn
+                color="blue darken-1"
+                text
+                @click="save"
+              >
+                Save
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+
+        </v-dialog>
   <v-row class="fill-height">
     <v-col>
       <v-sheet height="64">
@@ -145,8 +221,6 @@
   </div>
 </template>
 
-
-
 <script>
   export default {
     data: () => ({
@@ -161,6 +235,13 @@
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
+      eventCount: 0,
+      newEvent: {
+          name: '',
+          start: '',
+          end: '',
+          memo: '',
+      },
       events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
       names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
@@ -185,9 +266,18 @@
       next () {
         this.$refs.calendar.next()
       },
-      addwindow () {
-          return 0;
-      },
+      /*addEvent (name, start, end, ) {
+          const events[]
+          events.push({
+              name: name,
+              start: start,
+              end: end,
+              color: this.colors[this.rnd(0, this.colors.length - 1)],
+              timed: !allDay
+          })
+          this.events = events
+          return
+      },*/
       showEvent ({ nativeEvent, event }) {
         const open = () => {
           this.selectedEvent = event
@@ -207,8 +297,8 @@
         const min = new Date(`${start.date}T00:00:00`)
         const max = new Date(`${end.date}T23:59:59`)
         const days = (max.getTime() - min.getTime()) / 86400000
-        const eventCount = this.rnd(days, days + 20)
-        for (let i = 0; i < eventCount; i++) {
+        //const eventCount = this.rnd(days, days + 20)
+        for (let i = 0; i < this.eventCount; i++) {
           const allDay = this.rnd(0, 3) === 0
           const firstTimestamp = this.rnd(min.getTime(), max.getTime())
           const first = new Date(firstTimestamp - (firstTimestamp % 900000))
@@ -227,6 +317,13 @@
       rnd (a, b) {
         return Math.floor((b - a + 1) * Math.random()) + a
       },
+      save () {
+          if(this.eventCount > 0) {
+              Object.assign(this.event[this.eventCount], this.newEvent)
+          } else {
+              this.events.push(this.newEvent)
+          }
+      }
     },
   }
 </script>
