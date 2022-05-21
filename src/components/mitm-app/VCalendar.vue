@@ -11,11 +11,24 @@
             large
             color="blue"
             v-on="on"
+            float:left
           >
             <v-icon x-large>
                 mdi-plus-circle
             </v-icon>
           </v-btn>
+          	  <div align="right">
+	  <v-btn
+            outlined
+            large
+            class="mr-4 adjust"
+            color="grey darken-2"
+			@click="$router.push('/companylist')"
+            float:right
+          >
+                企業一覧
+        </v-btn>
+		</div>
           </template>
           <v-card>
               <v-card-title>
@@ -332,5 +345,10 @@
     .calendar-height{
         padding: 80px;
         height: 100%;
+    }
+    .adjust{
+        position: relative;
+        top: -50px;
+        right: 10px
     }
 </style>
