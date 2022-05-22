@@ -88,7 +88,9 @@ import VCompanyList from '@/components/mitm-app/VCompanyList.vue';
 
 //企業一覧リストから取得
 @Component({
-
+	components:{
+		VCompanyList,
+	},
 })
 export default class VCompany extends Vue {
 	public companyName = '企業名'
@@ -102,6 +104,8 @@ export default class VCompany extends Vue {
 		{scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'},
 		{scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'},
 	]
+
+
 
 
 	public getIp() {
@@ -135,7 +139,9 @@ export default class VCompany extends Vue {
 	font-size: xx-large;
 	//font-family:'Times New Roman', Times, serif;
 }
-.company_name > h1{}
+.company_name > h1{
+	font-family:'Times New Roman', Times, serif;
+}
 
 #row-label{
 	

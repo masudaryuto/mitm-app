@@ -133,6 +133,9 @@
 </script>
 
 <style>
+.company_name > h2{
+  font-family: 'Times New Roman', Times, serif;
+}
 .bit_right{
     position: relative;
     left: 10px;
