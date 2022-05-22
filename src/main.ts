@@ -11,7 +11,16 @@ import VueAxios from 'vue-axios' //追加
 
 Vue.config.productionTip = false
 
-Vue.use(VueAxios, axios) //追加
+Vue.use(
+  VueAxios,
+  axios.create({
+    baseURL: "http://44.204.96.174",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    withCredentials: true,
+  })
+); //追加
 
 new Vue({
   router,

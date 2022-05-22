@@ -46,7 +46,7 @@
       >
         <v-btn
         color="primary"
-        @click="$router.push('/company')"
+        @click="signin"
         >
         ログイン
         </v-btn>
@@ -68,9 +68,9 @@ import {Vue, Component} from 'vue-property-decorator';
 @Component
 export default class VMain extends Vue {
   
-  public id = "m"
+  public id = "user1"
 
-  public password = "090"
+  public password = "pass0001"
   
   public login(){
     return 0
@@ -78,13 +78,23 @@ export default class VMain extends Vue {
 
 //44.193.226.79/api/companies/903861419
   public getIp() {
-    this.axios.get('44.193.226.79/api/companies/')
+    this.axios.get('/api/companies')
     .then((response) => {
         alert(response.data.origin);
     })
     .catch((e) => {
       alert(e);
     });
+  }
+
+  public signin() {
+    this.axios.post('api/signin', {
+      id: this.id,
+      pass: this.password
+    })
+    .then(()=>this.$router.push('/company'))
+    .catch((e)=>console.log(e));
+    
   }
 }
 </script>
