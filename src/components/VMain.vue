@@ -54,6 +54,8 @@
 
     </div>
 
+    <input @click="getIp()" type="button" value="IPを取得">
+
 
 
     
@@ -72,6 +74,17 @@ export default class VMain extends Vue {
   
   public login(){
     return 0
+  }
+
+//44.193.226.79/api/companies/903861419
+  public getIp() {
+    this.axios.get('44.193.226.79/api/companies/')
+    .then((response) => {
+        alert(response.data.origin);
+    })
+    .catch((e) => {
+      alert(e);
+    });
   }
 }
 </script>

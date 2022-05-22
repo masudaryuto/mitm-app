@@ -50,16 +50,16 @@
 			outlined
 			title
 			>
-			<div class="schedule_title" id="schedule-title">
+			<div class="schedule-title">
 				<p>{{companySchedule.scheduleTitle}}</p>
 			</div>
-			<div class="schedule_date">
+			<div class="schedule-date">
 				<pre>日付&#009;&#009;{{companySchedule.scheduleDate}}</pre>
 			</div>
-			<div class="company_url">
+			<div class="schedule-url">
 				<pre>URL&#009;&#009;<a v-bind:href="companySchedule.scheduleUrl">{{companySchedule.scheduleUrl}}</a></pre>
 			</div>
-			<div class="memo">
+			<div class="schedule-memo">
 				<pre>メモ&#009;&#009;{{companySchedule.scheduleMemo}}</pre>
 			</div>
 		</v-card>
@@ -120,14 +120,18 @@ export default class VCompany extends Vue {
 	
 }
 
-#schedule-title{
-	font-size: 24px;
+.schedule-title{
+	font-size: 30px;
 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
-#schedule-title > p{
+.schedule-title > p{
 	margin-bottom: 0%;
 }
+.schedule-date ,.schedule-url, .schedule-url, .schedule-memo > pre{
+	font-size: 20px;
+}
+
 
 
 
