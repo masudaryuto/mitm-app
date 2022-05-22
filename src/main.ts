@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 Vue.use(
   VueAxios,
   axios.create({
-    baseURL: "http://44.204.96.174",
+    baseURL: "https://44.204.96.174",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
