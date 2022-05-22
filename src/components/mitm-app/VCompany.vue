@@ -1,5 +1,15 @@
 <template>
   <v-container >
+	  <div align="right">
+	  <v-btn
+            outlined
+            large
+            class="mr-4"
+			@click="$router.push('/companylist')"
+          >
+                一覧に戻る
+        </v-btn>
+		</div>
 	<v-layout 
 	justify-center 
 	>
