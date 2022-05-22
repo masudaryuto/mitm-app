@@ -3,10 +3,9 @@
     max-width="600"
     class="mx-auto"
   >
-
     <v-container>
     <div align="right">
-	  <v-btn
+        <v-btn
             outlined
             large
             class="mr-4 bit_bottom"
@@ -103,7 +102,7 @@
 <script>
   export default {
     data: () => ({
-        state: ' 直近の予定',
+        //state: '直近の予定',
       items: [
         {
           color: '#1F7087',

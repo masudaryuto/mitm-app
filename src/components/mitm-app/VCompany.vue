@@ -1,7 +1,5 @@
 <template>
-  <v-container >
-	  <div align="right">
-	  <v-btn
+  <v-container ><div align="right"><v-btn
             outlined
             large
             class="mr-4"

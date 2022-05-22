@@ -17,8 +17,8 @@
                 mdi-plus-circle
             </v-icon>
           </v-btn>
-          	  <div align="right">
-	  <v-btn
+    <div align="right">
+	<v-btn
             outlined
             large
             class="mr-4 adjust"
