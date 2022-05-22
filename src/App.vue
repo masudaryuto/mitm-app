@@ -4,7 +4,9 @@
       app
       color="primary"
       dark
+      id="app-bar"
     >
+    就活管理アプリ
 
 
     </v-app-bar>
@@ -30,3 +32,11 @@ export default Vue.extend({
 
 
 </script>
+
+<style scoped>
+
+#app-bar{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+</style>

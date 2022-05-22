@@ -11,6 +11,7 @@ import VueAxios from 'vue-axios' //追加
 
 Vue.config.productionTip = false
 
+
 Vue.use(
   VueAxios,
   axios.create({
@@ -21,6 +22,7 @@ Vue.use(
     withCredentials: true,
   })
 ); //追加
+
 
 new Vue({
   router,

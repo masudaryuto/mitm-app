@@ -50,7 +50,7 @@
                           <v-col
                             cols="12"
                             sm="6"
-                            md="4"  
+                            md="4"
                           >
                             <v-text-field
                                 v-model="newEvent.start"
@@ -85,7 +85,7 @@
               <v-btn
                 color="blue darken-1"
                 text
-                @click="close"
+                @click = "dialog = false"
               >
                 Cancel
               </v-btn>
@@ -236,6 +236,7 @@
 
 <script>
   export default {
+    
     data: () => ({
       focus: '',
       type: 'month',
@@ -248,7 +249,6 @@
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
-      eventCount: 0,
       newEvent: {
           name: '',
           start: '',
@@ -307,16 +307,39 @@
       },
       updateRange ({ start, end }) {
         const events = []
-        const min = new Date(`${start.date}T00:00:00`)
-        const max = new Date(`${end.date}T23:59:59`)
+        const min = new Date(`${start.date}T00:00:00`)//一か月における日付の最初
+        const max = new Date(`${end.date}T23:59:59`)//一か月における日付の最後
         const days = (max.getTime() - min.getTime()) / 86400000
-        //const eventCount = this.rnd(days, days + 20)
-        for (let i = 0; i < this.eventCount; i++) {
+        const eventCount = this.events.length//this.rnd(days, days + 20)//
+        console.log(2)
+        console.log(eventCount)
+        for (let i = 0; i < eventCount; i++) {
+          const allDay = this.rnd(0, 3) === 0
+          //const firstTimestamp = min.getTime();//this.rnd(min.getTime(), max.getTime())
+          var date1 = new Date(this.events[i].start)
+          const first = date1.getTime()//new Date(firstTimestamp - (firstTimestamp % 900000))//start.getTime();//
+          var date2 = new Date(this.events[i].end)
+          //const secondTimestamp = max.getTime()//this.rnd(2, allDay ? 288 : 8) * 900000
+          const second = date2.getTime();//new Date(first.getTime() + secondTimestamp)//end.getTime();//
+          console.log(date1)
+          console.log(date2)
+          events.push({
+            name: this.events[i].name,//this.names[this.rnd(0, this.names.length - 1)],//
+            start: date1,
+            end: date2,
+            color: this.colors[this.rnd(0, this.colors.length - 1)],
+            timed: !allDay,
+          })
+        }
+        /*
+        for (let i = 0; i < eventCount; i++) {
           const allDay = this.rnd(0, 3) === 0
           const firstTimestamp = this.rnd(min.getTime(), max.getTime())
           const first = new Date(firstTimestamp - (firstTimestamp % 900000))
           const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
           const second = new Date(first.getTime() + secondTimestamp)
+          console.log(first)
+          console.log(second)
           events.push({
             name: this.names[this.rnd(0, this.names.length - 1)],
             start: first,
@@ -324,19 +347,22 @@
             color: this.colors[this.rnd(0, this.colors.length - 1)],
             timed: !allDay,
           })
-        }
+        }*/
+    
         this.events = events
       },
       rnd (a, b) {
         return Math.floor((b - a + 1) * Math.random()) + a
       },
       save () {
-          if(this.eventCount > 0) {
-              Object.assign(this.event[this.eventCount], this.newEvent)
-          } else {
-              this.events.push(this.newEvent)
-          }
-      }
+        console.log(this.newEvent.name)
+        console.log(this.newEvent.start)
+        this.events.push(this.newEvent)
+        var date = new Date(this.newEvent.start)
+        console.log(date.getTime())
+        //this.eventCount += 1;
+        //console.log(this.eventCount)
+      },
     },
   }
 </script>

@@ -75,6 +75,8 @@
 		<br><br>
 	</div>
 
+	<input @click="getIp" type="button" value="テストIP取得">
+
 
 
   </v-container>
@@ -82,15 +84,19 @@
 
 <script lang="ts">
 import {Vue, Component, Prop} from 'vue-property-decorator';
+import VCompanyList from '@/components/mitm-app/VCompanyList.vue';
 
-@Component({})
+//企業一覧リストから取得
+@Component({
+
+})
 export default class VCompany extends Vue {
 	public companyName = '企業名'
 	public statusText = '選考状態'
 	public industryText = '業種'
 	public company_url = 'https://...'
 	//public companySchedule = {scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'}
-	public memo = '業界研究１DAYインターンシップは、半日プログラム（２時間程度）です。 総合職のマーケティングや 企画の体験を通じて、業界研究ができるセミナーです。少人数での開催ですので、人事担当者に業界の事や就職活動の事等何でもご相談いただけます。お気軽にご参加お待ちしています♪'
+	public memo = '服装自由、交通費支給'
 	public companySchedules = [
 		{scheduleTitle:'1day業界セミナー', scheduleDate:'2022年5月21日', scheduleUrl:'https://talent.supporterz.jp/events/', scheduleMemo:this.memo},
 		{scheduleTitle:'予定タイトル', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'},
@@ -98,7 +104,26 @@ export default class VCompany extends Vue {
 	]
 
 
-	
+	public getIp() {
+		this.axios.get('/api/companies')
+		.then((response) => {
+			console.log(response.data)
+		})
+		.catch((e) => {
+		alert(e)
+		//テストデータ
+		
+		this.companyName = 'サイバーエージェント'
+		this.statusText = '内定'
+		this.industryText = 'エンジニア'
+		this.company_url = 'https://www.cyberagent.co.jp/'
+		const schedule = {scheduleTitle:'サイバーエージェントインターン', scheduleDate:'日付', scheduleUrl:'URL', scheduleMemo:'メモ'}
+
+		this.companySchedules.length = 0
+		this.companySchedules.push(schedule)
+		
+		});
+	}
 	
 }
 </script>
@@ -110,6 +135,7 @@ export default class VCompany extends Vue {
 	font-size: xx-large;
 	//font-family:'Times New Roman', Times, serif;
 }
+.company_name > h1{}
 
 #row-label{
 	
